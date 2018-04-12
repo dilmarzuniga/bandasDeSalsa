@@ -2,5 +2,10 @@
 <h2>Información de {{banda.nombre}}!</h2>
 <div>
   <label>Nombre: </label>
-  <input [(ngModel)]="banda.nombre" placeholder="nombre del grupo">
+  <input *ngIf="banda" [(ngModel)]="banda.nombre" placeholder="nombre del grupo">
+  <ul class="bandas">
+    <li [class.selected]="bandaItem === banda" *ngFor="let bandaItem of bandas" (click)="seleccionar(bandaItem)">
+      <span class="insignia">{{bandaItem.id}}</span> {{bandaItem.nombre}}
+    </li>
+  </ul>
 </div>
